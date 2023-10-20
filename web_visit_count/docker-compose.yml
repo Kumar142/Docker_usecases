@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: your_database
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+      
+  app:
+    build: .
+    command: python web_visit_counter.py
+    depends_on:
+      - db
+    ports:
+      - "5000:8080"
